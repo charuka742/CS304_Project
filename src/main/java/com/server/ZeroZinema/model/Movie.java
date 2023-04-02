@@ -11,23 +11,34 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "movie")
+@Table(name = "Movie")
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long movieId;
+    @Column(name = "movieId")
+    private int movieId;
+    @Column(name = "title")
     private String title;
+    @Column(name = "language")
     private String language;
+    @Column(name = "description")
     private String description;
+    @Column(name = "rating")
     private  double rating;
     @ElementCollection(targetClass = String.class)
+    @Column(name = "genres")
     private Set<String> genres;
     @ElementCollection(targetClass = String.class)
+    @Column(name = "cast")
     private Set<String> cast;
+    @Column(name = "trailer")
     private String trailer;
+    @Column(name = "director")
     private String director;
+    @Column(name = "releaseDate")
     private Date releaseDate;
+    @Column(name = "runtime")
     private int runtime;
 
 

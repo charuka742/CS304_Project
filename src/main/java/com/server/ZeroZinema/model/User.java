@@ -15,13 +15,21 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
-    private Long id;
+    @Column(name = "id")
+    private int id;
+    @Column(name = "firstName")
     private String firstName;
+    @Column(name = "lastName")
     private String lastName;
+    @Column(name = "email")
     private String email;
+    @Column(name = "dob")
     private LocalDate dob;
+    @Column(name = "mobileNo")
     private Long mobileNo;
+    @Column(name = "district")
     private String district;
+    @Column(name = "password")
     private String password;
+
 }

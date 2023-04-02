@@ -10,14 +10,14 @@ import lombok.Setter;
 import java.util.Set;
 
 @Entity
-@Table(name = "theatre")
+@Table(name = "Theatre")
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter
 public class Theatre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @Column(name = "theatreName")
     private String theatreName;
@@ -31,11 +31,6 @@ public class Theatre {
     private String managerName;
     @Column(name = "managerNo")
     private String managerNo;
-
-    /*@ElementCollection(targetClass = Seats.class)
-    @Enumerated(EnumType.STRING)
-    @Column(name = "seats")
-    private Set<Seats> seats;*/
     @Column(name = "noOfCol")
     private int noOfCol;
     @Column(name = "noOfRow")
