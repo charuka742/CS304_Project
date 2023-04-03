@@ -1,6 +1,6 @@
 package com.server.ZeroZinema.model;
 
-/*import com.server.ZeroZinema.enums.Seats;*/
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,17 +31,13 @@ public class Theatre {
     private String managerName;
     @Column(name = "managerNo")
     private String managerNo;
-    @Column(name = "noOfCol")
-    private int noOfCol;
-    @Column(name = "noOfRow")
-    private int noOfRow;
+    @Column(name = "noOfTotalSeats")
+    private int noOfTotalSeats;
     @Column(name = "standardSeats")
     private int standardSeats;
     @Column(name = "premiumSeats")
     private int premiumSeats;
     @Column(name = "vipSeats")
     private int vipSeats;
-
-
 
 }

@@ -1,7 +1,8 @@
 package com.server.ZeroZinema.controller;
 
-import com.server.ZeroZinema.model.Show;
-import com.server.ZeroZinema.repository.ShowRepository;
+import com.server.ZeroZinema.model.Payment;
+
+import com.server.ZeroZinema.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,17 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
 @RestController
-public class ShowController {
+public class PaymentController {
     @Autowired
-    private ShowRepository showRepository;
+    private PaymentRepository paymentRepository;
 
     @PostMapping("/addShow")
-    Show newShow(@RequestBody Show newShow){
-        return showRepository.save(newShow);
+    Payment newPayment(@RequestBody Payment newPayment){
+        return paymentRepository.save(newPayment);
     }
     @GetMapping("/shows")
-    List<Show> getAllShow(){
-        return showRepository.findAll();
+    List<Payment> getAllShow(){
+        return paymentRepository.findAll();
     }
 }

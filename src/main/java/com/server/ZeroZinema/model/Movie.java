@@ -27,25 +27,20 @@ public class Movie {
     @Column(name = "rating")
     private  double rating;
     @ElementCollection(targetClass = String.class)
-    @Column(name = "genres")
-    private Set<String> genres;
+    @Column(name = "genre")
+    private Set<String> genre;
     @ElementCollection(targetClass = String.class)
-    @Column(name = "cast")
-    private Set<String> cast;
-    @Column(name = "trailer")
-    private String trailer;
+    @Column(name = "crew")
+    private Set<String> crew;
+    @Column(name = "trailerLink")
+    private String trailerLink;
+    @Column(name = "downloadLink")
+    private String downloadLink;
     @Column(name = "director")
     private String director;
     @Column(name = "releaseDate")
     private Date releaseDate;
     @Column(name = "runtime")
     private int runtime;
-
-
-
-
-
-
-
 
 }

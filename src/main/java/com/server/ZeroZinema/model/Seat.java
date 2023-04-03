@@ -1,28 +1,32 @@
 package com.server.ZeroZinema.model;
 
+import com.server.ZeroZinema.enums.SeatType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Entity
-@Table(name = "Feedback")
+@Table(name = "Seat")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Feedback {
+public class Seat {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "comment")
-    private String comment;
-    @Column(name = "complain")
-    private String complain;
-    @Column(name = "rating")
-    private double rating;
-    @Column(name = "theatreOrMovie")
-    private String theatreOrMovie;
+    @Column(name = "rowNo")
+    private int rowNo;
+    @Column(name = "colNo")
+    private int colNo;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "seattype")
+    private SeatType seatType;
+
+
 }
