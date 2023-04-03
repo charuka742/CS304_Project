@@ -21,8 +21,10 @@ public class PaymentController {
     Payment newPayment(@RequestBody Payment newPayment){
         return paymentRepository.save(newPayment);
     }
-    @GetMapping("/AllPayments")
-    List<Payment> getAllShow(){
+    
+    @GetMapping("/AllPayment")
+    List<Payment> getAllPayment(){
+
         return paymentRepository.findAll();
     }
 }
