@@ -9,7 +9,7 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name = "Seat")
+@Table(name = "seat")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -27,6 +27,11 @@ public class Seat {
     @Enumerated(EnumType.STRING)
     @Column(name = "seatType")
     private SeatType seatType;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "theatre_id")
+    private Theatre theatre;
+
 
 
 }

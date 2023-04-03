@@ -9,7 +9,7 @@ import lombok.Setter;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "Feedback")
+@Table(name = "feedback")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -29,4 +29,9 @@ public class Feedback {
     private double rating;
     @Column(name = "theatreOrMovie")
     private String theatreOrMovie;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    private User user;
+
 }
