@@ -24,7 +24,7 @@ public class Feedback {
     @Column(name = "complain")
     private String complain;
     @Column(name = "timeCommented")
-    private Timestamp time;
+    private Timestamp timeCommented;
     @Column(name = "rating")
     private double rating;
     @Column(name = "theatreOrMovie")

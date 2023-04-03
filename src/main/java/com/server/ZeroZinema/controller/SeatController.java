@@ -15,12 +15,12 @@ public class SeatController {
     @Autowired
     private SeatRepository seatRepository;
 
-    @PostMapping("/ticket")
+    @PostMapping("/seat")
     Seat newSeat(@RequestBody Seat newSeat){
         return seatRepository.save(newSeat);
     }
 
-    @GetMapping("/allTickets")
+    @GetMapping("/allSeats")
     List<Seat> getAllSeat(){
         return seatRepository.findAll();
     }

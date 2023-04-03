@@ -22,10 +22,8 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-
     @Column(name = "amount")
     private double amount;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "paymentMethod")
     private PaymentMethod paymentMethod;
