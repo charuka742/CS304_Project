@@ -25,7 +25,7 @@ public class Seat {
     @Column(name = "colNo")
     private int colNo;
     @Enumerated(EnumType.STRING)
-    @Column(name = "seattype")
+    @Column(name = "seatType")
     private SeatType seatType;
 
 
