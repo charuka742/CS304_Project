@@ -1,13 +1,13 @@
 package com.server.ZeroZinema.model;
 
+import com.server.ZeroZinema.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.management.relation.Role;
-import java.time.LocalDate;
+import java.sql.Date;
 
 @Entity
 @Table(name = "User")
@@ -25,7 +25,7 @@ public class User {
     @Column(name = "email")
     private String email;
     @Column(name = "dob")
-    private LocalDate dob;
+    private Date dob;
     @Column(name = "mobileNo")
     private Long mobileNo;
     @Column(name = "district")

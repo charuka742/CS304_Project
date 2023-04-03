@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Timestamp;
+
 @Entity
 @Table(name = "Feedback")
 @AllArgsConstructor
@@ -21,6 +23,8 @@ public class Feedback {
     private String comment;
     @Column(name = "complain")
     private String complain;
+    @Column(name = "timeCommented")
+    private Timestamp time;
     @Column(name = "rating")
     private double rating;
     @Column(name = "theatreOrMovie")
