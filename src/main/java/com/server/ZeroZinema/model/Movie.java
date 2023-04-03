@@ -43,4 +43,5 @@ public class Movie {
     @Column(name = "runtime")
     private int runtime;
 
+
 }

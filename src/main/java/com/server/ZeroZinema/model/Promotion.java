@@ -15,4 +15,8 @@ public class Promotion {
     @Enumerated(EnumType.STRING)
     @Column(name = "promotionType")
     private PromotionType promotionType;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "theatre_id")
+    private Theatre theatre;
 }

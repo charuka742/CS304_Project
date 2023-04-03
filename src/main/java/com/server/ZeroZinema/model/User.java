@@ -36,4 +36,8 @@ public class User {
     @Column(name = "role")
     private Role role;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "theatre_id")
+    private Theatre theatre;
+
 }

@@ -28,5 +28,10 @@ public class Seat {
     @Column(name = "seatType")
     private SeatType seatType;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "theatre_id")
+    private Theatre theatre;
+
+
 
 }

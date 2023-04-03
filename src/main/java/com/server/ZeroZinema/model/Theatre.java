@@ -1,13 +1,13 @@
 package com.server.ZeroZinema.model;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
+import java.util.List;
+
 
 @Entity
 @Table(name = "Theatre")
@@ -39,5 +39,16 @@ public class Theatre {
     private int premiumSeats;
     @Column(name = "vipSeats")
     private int vipSeats;
+
+
+    @OneToMany(mappedBy = "theatre", cascade = CascadeType.ALL)
+    private List<Seat> seats;
+
+    @OneToMany(mappedBy = "theatre", cascade = CascadeType.ALL)
+    private List<Promotion> promotions;
+
+    @OneToMany(mappedBy = "theatre", cascade = CascadeType.ALL)
+    private List<User> users;
+
 
 }
