@@ -1,5 +1,6 @@
 package com.server.ZeroZinema.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.server.ZeroZinema.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,10 +9,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "User")
-@Getter @Setter @AllArgsConstructor @NoArgsConstructor
+@Table(name = "user")
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -39,5 +43,21 @@ public class User {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "theatre_id")
     private Theatre theatre;
+
+    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "User_movie",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id"))
+    private List<Movie> movies;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Promotion> promotions;
+
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+    private Payment payment;
+
+    @OneToMany(mappedBy="user" ,cascade = CascadeType.ALL)
+    private List<Feedback> feedbacks;
 
 }

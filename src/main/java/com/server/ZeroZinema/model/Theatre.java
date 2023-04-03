@@ -1,5 +1,6 @@
 package com.server.ZeroZinema.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "Theatre")
+@Table(name = "theatre")
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter
 public class Theatre {
 
@@ -50,5 +51,8 @@ public class Theatre {
     @OneToMany(mappedBy = "theatre", cascade = CascadeType.ALL)
     private List<User> users;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "theatre",cascade = CascadeType.ALL)
+    private List<TheatreMovie> theatreMovies;
 
 }
