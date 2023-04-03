@@ -17,12 +17,12 @@ public class PaymentController {
     @Autowired
     private PaymentRepository paymentRepository;
 
-    @PostMapping("/addShow")
+    @PostMapping("/addPayment")
     Payment newPayment(@RequestBody Payment newPayment){
         return paymentRepository.save(newPayment);
     }
-    @GetMapping("/shows")
-    List<Payment> getAllShow(){
+    @GetMapping("/AllPayment")
+    List<Payment> getAllPayment(){
         return paymentRepository.findAll();
     }
 }
