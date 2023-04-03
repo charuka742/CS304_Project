@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
-import java.sql.Time;
+import java.time.LocalTime;
 
 
 @Entity
@@ -32,6 +32,6 @@ public class Payment {
     @Column(name = "date")
     private Date date;
     @Column(name = "time")
-    private Time time;
+    private LocalTime time;
 
 }
