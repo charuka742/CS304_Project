@@ -1,28 +1,54 @@
 package com.server.ZeroZinema.controller;
 
 import com.server.ZeroZinema.model.Theatre;
-import com.server.ZeroZinema.repository.TheatreRepository;
+import com.server.ZeroZinema.payloads.ApiResponse;
+import com.server.ZeroZinema.payloads.TheatreDto;
+import com.server.ZeroZinema.services.TheatreService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1/theatres")
 public class TheatreController {
+
     @Autowired
-    private TheatreRepository theatreRepository;
+    private TheatreService theatreService;
 
-    @PostMapping("/addTheatre")
-    Theatre newTheatre(@RequestBody Theatre newTheatre){
-        return theatreRepository.save(newTheatre);
-
+    /* ADD THEATRE */
+    @PostMapping("/add")
+    public ResponseEntity<TheatreDto> createTheatre(@RequestBody Theatre theatre){
+        TheatreDto createdTheatreDto = this.theatreService.createTheatre(theatre);
+        return new ResponseEntity<>(createdTheatreDto, HttpStatus.CREATED);
     }
 
+    /* UPDATE THEATRE */
+    @PutMapping("/update/{theatreId}")
+    public ResponseEntity<TheatreDto> updateTheatre(@RequestBody Theatre theatre,@PathVariable("theatreId") Integer theatreId){
+        TheatreDto updatedTheatreDto = this.theatreService.updateTheatre(theatre, theatreId);
+        return  ResponseEntity.ok(updatedTheatreDto);
+    }
+
+    /* DELETE THEATRE */
+    @DeleteMapping("/delete/{theatreId}")
+    public  ResponseEntity<ApiResponse> deleteTheatre(@PathVariable("theatreId") Integer theatreId){
+        this.theatreService.deleteTheatre(theatreId);
+        return new ResponseEntity<>(new ApiResponse("Theatre Deleted Successfully", true), HttpStatus.OK);
+    }
+
+    /* ALL THEATRES */
     @GetMapping("/allTheatres")
-    List<Theatre> getAllTheatres(){
-        return theatreRepository.findAll();
+    public ResponseEntity<List<TheatreDto>> getAllTheatres(){
+        return ResponseEntity.ok(this.theatreService.getAllTheatre());
     }
+
+    /* SINGLE THEATRE */
+    @GetMapping("/single/{theatreId}")
+    public ResponseEntity<TheatreDto> getSingleTheatre(@PathVariable("theatreId") Integer theatreId){
+        return ResponseEntity.ok(this.theatreService.getById(theatreId));
+    }
+
 }

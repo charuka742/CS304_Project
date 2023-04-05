@@ -3,7 +3,6 @@ package com.server.ZeroZinema.controller;
 import com.server.ZeroZinema.model.User;
 import com.server.ZeroZinema.payloads.ApiResponse;
 import com.server.ZeroZinema.payloads.UserDto;
-import com.server.ZeroZinema.repository.UserRepository;
 import com.server.ZeroZinema.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,26 +14,25 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
-    @Autowired
-    public UserRepository userRepository;
+
     @Autowired
     private UserService userService;
 
-    /* add user */
+    /* ADD USER */
     @PostMapping("/add")
     public ResponseEntity<UserDto> createUser(@RequestBody User user){
         UserDto createdUserDto = this.userService.createUser(user);
         return  new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
     }
 
-    /* update user */
+    /* UPDATED USER */
     @PutMapping("/update/{userId}")
     public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto, @PathVariable("userId") Integer uid){
        UserDto updatedUser = this.userService.updateUser(userDto, uid);
         return ResponseEntity.ok(updatedUser);
     }
 
-    /* delete user */
+    /* DELETE USER */
     @DeleteMapping("/delete/{userId}")
     public ResponseEntity<ApiResponse> deleteUser(@PathVariable("userId") Integer uid){
         this.userService.deleteUser(uid);
@@ -42,14 +40,14 @@ public class UserController {
 
     }
 
-    /* Get All Users */
+    /* GET ALL USERS */
     @GetMapping("/allUsers")
     public ResponseEntity<List<UserDto>> getAllUsers(){
         return ResponseEntity.ok(this.userService.getAllUsers());
     }
 
 
-    /* Get Single User */
+    /* GET SINGLE USER */
     @GetMapping("/single/{userId}")
     public ResponseEntity<UserDto> getSingleUser(@PathVariable("userId") Integer userId){
         return ResponseEntity.ok(this.userService.getById(userId));
