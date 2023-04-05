@@ -1,5 +1,6 @@
 package com.server.ZeroZinema.controller;
 
+import com.server.ZeroZinema.model.User;
 import com.server.ZeroZinema.payloads.ApiResponse;
 import com.server.ZeroZinema.payloads.UserDto;
 import com.server.ZeroZinema.repository.UserRepository;
@@ -11,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
-
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
@@ -23,13 +22,13 @@ public class UserController {
 
     /* add user */
     @PostMapping("/add")
-    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
-        UserDto createdUserDto = this.userService.createUser(userDto);
+    public ResponseEntity<UserDto> createUser(@RequestBody User user){
+        UserDto createdUserDto = this.userService.createUser(user);
         return  new ResponseEntity<>(createdUserDto, HttpStatus.CREATED);
     }
 
     /* update user */
-    @PutMapping("/u/{userId}")
+    @PutMapping("/update/{userId}")
     public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto, @PathVariable("userId") Integer uid){
        UserDto updatedUser = this.userService.updateUser(userDto, uid);
         return ResponseEntity.ok(updatedUser);
@@ -51,22 +50,10 @@ public class UserController {
 
 
     /* Get Single User */
-    @GetMapping("/user/{userId}")
+    @GetMapping("/single/{userId}")
     public ResponseEntity<UserDto> getSingleUser(@PathVariable("userId") Integer userId){
         return ResponseEntity.ok(this.userService.getById(userId));
     }
 
 
-
-   /*  @PostMapping("/user")
-     User newUser(@RequestBody User newUser){
-        return userRepository.save(newUser);
-     }
-
-
-
-     @GetMapping("/users")
-     List<User> getAllUsers(){
-        return userRepository.findAll();
-     }*/
 }

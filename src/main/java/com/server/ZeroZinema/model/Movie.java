@@ -28,12 +28,15 @@ public class Movie {
     private String description;
     @Column(name = "rating")
     private  double rating;
+
     @ElementCollection(targetClass = String.class)
     @Column(name = "genre")
     private Set<String> genre;
+
     @ElementCollection(targetClass = String.class)
     @Column(name = "crew")
     private Set<String> crew;
+
     @Column(name = "trailerLink")
     private String trailerLink;
     @Column(name = "downloadLink")

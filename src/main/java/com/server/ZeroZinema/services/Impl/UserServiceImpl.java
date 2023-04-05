@@ -19,15 +19,18 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private UserDto userDto;
 
+
+
+    /*********** CREATE USER *******/
     @Override
-    public UserDto createUser(UserDto userDto) {
-        User user = this.dtoToUser(userDto);
+    public UserDto createUser(User user) {
         User savedUser = this.userRepository.save(user);
         return this.userToDto(savedUser);
     }
 
+    /*********** UPDATE USER *******/
     @Override
-    public UserDto updateUser(UserDto userDto, Integer userId) {
+    public UserDto updateUser(@NotNull UserDto userDto, Integer userId) {
         User user = this.userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User","Id", userId));
 
@@ -43,7 +46,7 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
+    /*********** GETBYID *******/
     @Override
     public UserDto getById(Integer userId) {
         User user = this.userRepository.findById(userId)
@@ -51,6 +54,7 @@ public class UserServiceImpl implements UserService {
         return this.userToDto(user);
     }
 
+    /*********** GETALLUSER *******/
     @Override
     public List<UserDto> getAllUsers() {
         List<User> users = this.userRepository.findAll();
@@ -58,6 +62,7 @@ public class UserServiceImpl implements UserService {
         return userDtos;
     }
 
+    /*********** DELETEUSER *******/
     @Override
     public void deleteUser(Integer userId) {
 
@@ -65,6 +70,7 @@ public class UserServiceImpl implements UserService {
         this.userRepository.delete(user);
     }
 
+    /*********** DTO TO USER *******/
     public  User dtoToUser(@NotNull UserDto userDto){
         this.userDto = userDto;
         User user = new User();
@@ -80,6 +86,7 @@ public class UserServiceImpl implements UserService {
         return user;
 
     }
+    /*********** USER TO DTO *******/
     public UserDto userToDto(@NotNull User user){
         UserDto userDto = new UserDto();
 
