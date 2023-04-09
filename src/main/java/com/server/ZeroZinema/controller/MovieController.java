@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/v1/movies")
 public class MovieController {
@@ -21,23 +21,22 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
-
     /* Add a movie */
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<MovieDto> createMovie(@RequestBody Movie movie){
         MovieDto createdMovieDto = this.movieService.createMovie(movie);
         return  new ResponseEntity<>(createdMovieDto, HttpStatus.CREATED);
     }
 
     /* Update Movie */
-    @PutMapping("/update/{movieId}")
+    @PutMapping("{movieId}")
     public ResponseEntity<MovieDto> updateMovie(@RequestBody MovieDto movieDto, @PathVariable("movieId") Integer movieId){
         MovieDto updateMovie = this.movieService.updateMovie(movieDto, movieId);
         return ResponseEntity.ok(updateMovie);
     }
 
     /* delete Movie */
-    @DeleteMapping("/delete/{movieId}")
+    @DeleteMapping("{movieId}")
     public ResponseEntity<ApiResponse> deleteMovie(@PathVariable("movieId") Integer movieId){
         this.movieService.deleteMovie(movieId);
         return  new ResponseEntity<>(new ApiResponse("Movie deleted Successfully", true), HttpStatus.OK);
@@ -45,14 +44,14 @@ public class MovieController {
     }
 
     /* Get All Users */
-    @GetMapping("/allMovies")
+    @GetMapping
     public ResponseEntity<List<MovieDto>> getAllMovies(){
         return ResponseEntity.ok(this.movieService.getAllMovies());
     }
 
 
     /* Get Single User */
-    @GetMapping("/single/{movieId}")
+    @GetMapping("{movieId}")
     public ResponseEntity<MovieDto> getSingleMovie(@PathVariable("movieId") Integer movieId){
         return ResponseEntity.ok(this.movieService.getById(movieId));
     }

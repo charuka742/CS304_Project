@@ -7,7 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -39,12 +40,12 @@ public class Movie {
 
     @Column(name = "trailerLink")
     private String trailerLink;
-    @Column(name = "downloadLink")
-    private String downloadLink;
+    @Column(name = "banner")
+    private String banner;
     @Column(name = "director")
     private String director;
     @Column(name = "releaseDate")
-    private Date releaseDate;
+    private LocalDate releaseDate;
     @Column(name = "runtime")
     private int runtime;
 

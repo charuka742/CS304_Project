@@ -35,6 +35,11 @@ public class MovieServiceImpl implements MovieService {
 
         movie.setTitle(movieDto.getTitle());
         movie.setLanguage(movieDto.getLanguage());
+        movie.setDescription(movieDto.getDescription());
+        movie.setRating(movieDto.getRating());
+        movie.setTrailerLink(movieDto.getTrailerLink());
+        movie.setBanner(movieDto.getBanner());
+        movie.setDirector(movieDto.getDirector());
         movie.setReleaseDate(movieDto.getReleaseDate());
         movie.setRuntime(movieDto.getRuntime());
 
@@ -69,16 +74,23 @@ public class MovieServiceImpl implements MovieService {
         this.movieRepository.delete(movie);
     }
 
-    /*********** DTO to MOVIE *******/
+    /*********** DTO to Movie *******/
     public Movie dtoToMovie(@NotNull MovieDto movieDto){
         this.movieDto = movieDto;
         Movie movie = new Movie();
 
-        movie.setMovieId(movieDto.getMovieId());
-        movie.setLanguage(movieDto.getLanguage());
         movie.setTitle(movieDto.getTitle());
+        movie.setLanguage(movieDto.getLanguage());
+        movie.setDescription(movieDto.getDescription());
+        movie.setRating(movieDto.getRating());
+        /*movie.setGenre(movieDto.getGenre());
+        movie.setCrew(movieDto.getCrew());*/
+        movie.setTrailerLink(movieDto.getTrailerLink());
+        movie.setBanner(movieDto.getBanner());
+        movie.setDirector(movieDto.getDirector());
         movie.setReleaseDate(movieDto.getReleaseDate());
         movie.setRuntime(movieDto.getRuntime());
+
 
         return movie;
 
@@ -90,6 +102,13 @@ public class MovieServiceImpl implements MovieService {
 
         movieDto.setTitle(movie.getTitle());
         movieDto.setLanguage(movie.getLanguage());
+        movieDto.setDescription(movie.getDescription());
+        movieDto.setRating(movie.getRating());
+        /*movieDto.setGenre(movie.getGenre());
+        movieDto.setCrew(movie.getCrew());*/
+        movieDto.setTrailerLink(movie.getTrailerLink());
+        movieDto.setBanner(movie.getBanner());
+        movieDto.setDirector(movie.getDirector());
         movieDto.setReleaseDate(movie.getReleaseDate());
         movieDto.setRuntime(movie.getRuntime());
 
