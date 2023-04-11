@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -27,10 +28,10 @@ public class User {
     private String name;
     @Column(name = "email")
     private String email;
-    @Column(name = "dob")
-    private Date dob;
+    @Column(name = "birthD")
+    private LocalDate birthD;
     @Column(name = "mobileNo")
-    private Long mobileNo;
+    private String mobileNo;
     @Column(name = "city")
     private String city;
     @Column(name = "password")

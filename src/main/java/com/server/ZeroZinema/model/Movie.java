@@ -28,7 +28,7 @@ public class Movie {
     @Column(name = "description")
     private String description;
     @Column(name = "rating")
-    private  double rating;
+    private  String rating;
 
     @ElementCollection(targetClass = String.class)
     @Column(name = "genre")
@@ -56,7 +56,5 @@ public class Movie {
     @JsonIgnore
     @ManyToMany(mappedBy = "movies",cascade = CascadeType.ALL)
     private List<User> users;
-
-
 
 }

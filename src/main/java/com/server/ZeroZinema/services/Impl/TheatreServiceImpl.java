@@ -88,10 +88,13 @@ public class TheatreServiceImpl implements TheatreService {
         this.theatreDto = theatreDto;
         Theatre theatre2 = new Theatre();
 
-        theatre2.setId(theatreDto.getId());
+        theatre2.setTheatreId(theatreDto.getTheatreId());
         theatre2.setTheatreName(theatreDto.getTheatreName());
         theatre2.setCity(theatreDto.getCity());
         theatre2.setEmail(theatreDto.getEmail());
+        theatre2.setTeleNo(theatreDto.getTeleNo());
+        theatre2.setManagerName(theatreDto.getManagerName());
+        theatre2.setManagerNo(theatreDto.getManagerNo());
         theatre2.setNoOfTotalSeats(theatreDto.getNoOfTotalSeats());
         theatre2.setPremiumSeats(theatreDto.getPremiumSeats());
         theatre2.setStandardSeats(theatreDto.getStandardSeats());
@@ -104,11 +107,14 @@ public class TheatreServiceImpl implements TheatreService {
     public TheatreDto theatreToDto(@NotNull Theatre theatre) {
         TheatreDto theatreDto = new TheatreDto();
 
-        theatreDto.setId(theatre.getId());
+        theatreDto.setTheatreId(theatre.getTheatreId());
 
         theatreDto.setTheatreName(theatre.getTheatreName());
         theatreDto.setCity(theatre.getCity());
         theatreDto.setEmail(theatre.getEmail());
+        theatreDto.setTeleNo(theatre.getTeleNo());
+        theatreDto.setManagerName(theatre.getManagerName());
+        theatreDto.setManagerNo(theatre.getManagerNo());
         theatreDto.setNoOfTotalSeats(theatre.getNoOfTotalSeats());
         theatreDto.setPremiumSeats(theatre.getPremiumSeats());
         theatreDto.setStandardSeats(theatre.getStandardSeats());

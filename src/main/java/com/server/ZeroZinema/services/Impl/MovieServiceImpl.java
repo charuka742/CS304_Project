@@ -77,22 +77,20 @@ public class MovieServiceImpl implements MovieService {
     /*********** DTO to Movie *******/
     public Movie dtoToMovie(@NotNull MovieDto movieDto){
         this.movieDto = movieDto;
-        Movie movie = new Movie();
+        Movie movie1 = new Movie();
 
-        movie.setTitle(movieDto.getTitle());
-        movie.setLanguage(movieDto.getLanguage());
-        movie.setDescription(movieDto.getDescription());
-        movie.setRating(movieDto.getRating());
-        /*movie.setGenre(movieDto.getGenre());
-        movie.setCrew(movieDto.getCrew());*/
-        movie.setTrailerLink(movieDto.getTrailerLink());
-        movie.setBanner(movieDto.getBanner());
-        movie.setDirector(movieDto.getDirector());
-        movie.setReleaseDate(movieDto.getReleaseDate());
-        movie.setRuntime(movieDto.getRuntime());
+        movie1.setTitle(movieDto.getTitle());
+        movie1.setLanguage(movieDto.getLanguage());
+        movie1.setDescription(movieDto.getDescription());
+        movie1.setRating(movieDto.getRating());
+        movie1.setTrailerLink(movieDto.getTrailerLink());
+        movie1.setBanner(movieDto.getBanner());
+        movie1.setDirector(movieDto.getDirector());
+        movie1.setReleaseDate(movieDto.getReleaseDate());
+        movie1.setRuntime(movieDto.getRuntime());
 
 
-        return movie;
+        return movie1;
 
     }
     /*********** MOVIE TO DTO *******/
@@ -104,8 +102,6 @@ public class MovieServiceImpl implements MovieService {
         movieDto.setLanguage(movie.getLanguage());
         movieDto.setDescription(movie.getDescription());
         movieDto.setRating(movie.getRating());
-        /*movieDto.setGenre(movie.getGenre());
-        movieDto.setCrew(movie.getCrew());*/
         movieDto.setTrailerLink(movie.getTrailerLink());
         movieDto.setBanner(movie.getBanner());
         movieDto.setDirector(movie.getDirector());

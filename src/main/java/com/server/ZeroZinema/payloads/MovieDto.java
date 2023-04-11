@@ -7,7 +7,6 @@ import lombok.Setter;
 import lombok.Getter;
 
 import java.time.LocalDate;
-import java.util.Set;
 
 @NoArgsConstructor
 @Getter
@@ -18,12 +17,14 @@ public class MovieDto {
     private String title;
     private String language;
     private String description;
-    private double rating;
-    /*private Set<String> genre;
-    private Set<String> crew;*/
+    private String rating;
     private String trailerLink;
     private String banner;
     private String director;
     private LocalDate releaseDate;
     private int runtime;
+
+
+    /*private Set<String> genre;
+    private Set<String> crew;*/
 }

@@ -65,41 +65,32 @@ public class UserServiceImpl implements UserService {
     /*********** DELETEUSER *******/
     @Override
     public void deleteUser(Integer userId) {
-
         User user =this.userRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User","Id",userId));
         this.userRepository.delete(user);
     }
 
     /*********** DTO TO USER *******/
-    public  User dtoToUser(@NotNull UserDto userDto){
-        this.userDto = userDto;
+    public User dtoToUser(@NotNull UserDto userDto){
         User user = new User();
-
-        user.setId(userDto.getId());
-
         user.setName(userDto.getName());
         user.setEmail(userDto.getEmail());
         user.setCity(userDto.getCity());
         user.setMobileNo(userDto.getMobileNo());
         user.setPassword(userDto.getPassword());
-
+        user.setRole(userDto.getRole());
         return user;
-
     }
+
     /*********** USER TO DTO *******/
     public UserDto userToDto(@NotNull User user){
         UserDto userDto = new UserDto();
-
         userDto.setId(user.getId());
-
         userDto.setName(user.getName());
         userDto.setEmail(user.getEmail());
         userDto.setCity(user.getCity());
         userDto.setMobileNo(user.getMobileNo());
         userDto.setPassword(user.getPassword());
-
+        userDto.setRole(user.getRole());
         return userDto;
-
     }
-
 }

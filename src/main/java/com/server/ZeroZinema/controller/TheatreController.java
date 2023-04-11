@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/v1/theatres")
 public class TheatreController {
@@ -19,34 +20,34 @@ public class TheatreController {
     private TheatreService theatreService;
 
     /* ADD THEATRE */
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<TheatreDto> createTheatre(@RequestBody Theatre theatre){
         TheatreDto createdTheatreDto = this.theatreService.createTheatre(theatre);
         return new ResponseEntity<>(createdTheatreDto, HttpStatus.CREATED);
     }
 
     /* UPDATE THEATRE */
-    @PutMapping("/update/{theatreId}")
+    @PutMapping("{theatreId}")
     public ResponseEntity<TheatreDto> updateTheatre(@RequestBody Theatre theatre,@PathVariable("theatreId") Integer theatreId){
         TheatreDto updatedTheatreDto = this.theatreService.updateTheatre(theatre, theatreId);
         return  ResponseEntity.ok(updatedTheatreDto);
     }
 
     /* DELETE THEATRE */
-    @DeleteMapping("/delete/{theatreId}")
+    @DeleteMapping("{theatreId}")
     public  ResponseEntity<ApiResponse> deleteTheatre(@PathVariable("theatreId") Integer theatreId){
         this.theatreService.deleteTheatre(theatreId);
         return new ResponseEntity<>(new ApiResponse("Theatre Deleted Successfully", true), HttpStatus.OK);
     }
 
     /* ALL THEATRES */
-    @GetMapping("/allTheatres")
+    @GetMapping
     public ResponseEntity<List<TheatreDto>> getAllTheatres(){
         return ResponseEntity.ok(this.theatreService.getAllTheatre());
     }
 
     /* SINGLE THEATRE */
-    @GetMapping("/single/{theatreId}")
+    @GetMapping("{theatreId}")
     public ResponseEntity<TheatreDto> getSingleTheatre(@PathVariable("theatreId") Integer theatreId){
         return ResponseEntity.ok(this.theatreService.getById(theatreId));
     }

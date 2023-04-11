@@ -57,15 +57,4 @@ public class MovieController {
     }
 
 
-
-   /* @PostMapping("/addMovie")
-    Movie newMovie(@RequestBody Movie newMovie){
-        return movieRepository.save(newMovie);
-    }
-
-    @GetMapping("/movies")
-    List<Movie> getAllMovies(){
-        return movieRepository.findAll();
-    }*/
-
 }

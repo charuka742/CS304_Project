@@ -17,8 +17,8 @@ public class Theatre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @Column(name = "theatreId")
+    private int theatreId;
 
     @Column(name = "theatreName")
     private String theatreName;
