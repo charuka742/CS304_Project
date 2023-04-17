@@ -7,6 +7,18 @@ import java.util.List;
 
 public interface MovieService {
 
+
+    List<Movie> searchMoviesByTitle(String title);
+
+    List<Movie> searchMoviesByDirector(String director);
+
+  /*  List<Movie> searchMoviesByGenre(String genre);*/
+
+   /* List<Movie> searchMoviesByYear(int year);*/
+
+
+
+
     MovieDto createMovie(Movie movie);
     MovieDto updateMovie(MovieDto movie, Integer movieId);
     MovieDto getById(Integer movieId);

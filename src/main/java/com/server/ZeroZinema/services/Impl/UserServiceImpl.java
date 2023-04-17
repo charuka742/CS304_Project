@@ -39,6 +39,8 @@ public class UserServiceImpl implements UserService {
         user.setCity(userDto.getCity());
         user.setMobileNo(userDto.getMobileNo());
         user.setPassword(userDto.getPassword());
+        user.setDob(userDto.getDob());
+        user.setRole(userDto.getRole());
 
         User updatedUser = this.userRepository.save(user);
         UserDto userDto1 = this.userToDto(updatedUser);
@@ -72,25 +74,32 @@ public class UserServiceImpl implements UserService {
     /*********** DTO TO USER *******/
     public User dtoToUser(@NotNull UserDto userDto){
         User user = new User();
+
         user.setName(userDto.getName());
         user.setEmail(userDto.getEmail());
         user.setCity(userDto.getCity());
+        user.setDob(userDto.getDob());
+
         user.setMobileNo(userDto.getMobileNo());
         user.setPassword(userDto.getPassword());
         user.setRole(userDto.getRole());
+
         return user;
     }
 
     /*********** USER TO DTO *******/
     public UserDto userToDto(@NotNull User user){
         UserDto userDto = new UserDto();
-        userDto.setId(user.getId());
+
+        userDto.setUserId(user.getUserId());
         userDto.setName(user.getName());
         userDto.setEmail(user.getEmail());
+        userDto.setDob(user.getDob());
         userDto.setCity(user.getCity());
         userDto.setMobileNo(user.getMobileNo());
         userDto.setPassword(user.getPassword());
         userDto.setRole(user.getRole());
+
         return userDto;
     }
 }

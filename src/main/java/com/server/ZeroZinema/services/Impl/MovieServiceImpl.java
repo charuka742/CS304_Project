@@ -20,6 +20,31 @@ public class MovieServiceImpl implements MovieService {
 
     private MovieDto movieDto;
 
+    public MovieServiceImpl(MovieRepository movieRepository) {
+        this.movieRepository = movieRepository;
+    }
+
+    @Override
+    public List<Movie> searchMoviesByTitle(String title) {
+        return movieRepository.searchMoviesByTitle(title);
+    }
+
+    @Override
+    public List<Movie> searchMoviesByDirector(String director) {
+        return movieRepository.searchMoviesByDirector(director);
+    }
+
+    /*@Override
+    public List<Movie> searchMoviesByGenre(String genre) {
+        return movieRepository.searchMoviesByGenre(genre);
+    }*/
+
+   /* @Override
+    public List<Movie> searchMoviesByYear(int year) {
+        return movieRepository.findByYear(year);
+    }*/
+
+
     /*********** CREATE MOVIE *******/
     @Override
     public MovieDto createMovie(Movie movie) {
@@ -38,7 +63,7 @@ public class MovieServiceImpl implements MovieService {
         movie.setDescription(movieDto.getDescription());
         movie.setRating(movieDto.getRating());
         movie.setTrailerLink(movieDto.getTrailerLink());
-        movie.setBanner(movieDto.getBanner());
+        movie.setBannerlink(movieDto.getBannerlink());
         movie.setDirector(movieDto.getDirector());
         movie.setReleaseDate(movieDto.getReleaseDate());
         movie.setRuntime(movieDto.getRuntime());
@@ -84,7 +109,7 @@ public class MovieServiceImpl implements MovieService {
         movie1.setDescription(movieDto.getDescription());
         movie1.setRating(movieDto.getRating());
         movie1.setTrailerLink(movieDto.getTrailerLink());
-        movie1.setBanner(movieDto.getBanner());
+        movie1.setBannerlink(movieDto.getBannerlink());
         movie1.setDirector(movieDto.getDirector());
         movie1.setReleaseDate(movieDto.getReleaseDate());
         movie1.setRuntime(movieDto.getRuntime());
@@ -96,6 +121,7 @@ public class MovieServiceImpl implements MovieService {
     /*********** MOVIE TO DTO *******/
     public MovieDto movieToDto(@NotNull Movie movie){
         MovieDto movieDto = new MovieDto();
+
         movieDto.setMovieId(movie.getMovieId());
 
         movieDto.setTitle(movie.getTitle());
@@ -103,7 +129,7 @@ public class MovieServiceImpl implements MovieService {
         movieDto.setDescription(movie.getDescription());
         movieDto.setRating(movie.getRating());
         movieDto.setTrailerLink(movie.getTrailerLink());
-        movieDto.setBanner(movie.getBanner());
+        movieDto.setBannerlink(movie.getBannerlink());
         movieDto.setDirector(movie.getDirector());
         movieDto.setReleaseDate(movie.getReleaseDate());
         movieDto.setRuntime(movie.getRuntime());

@@ -40,8 +40,8 @@ public class Movie {
 
     @Column(name = "trailerLink")
     private String trailerLink;
-    @Column(name = "banner")
-    private String banner;
+    @Column(name = "bannerlink")
+    private String bannerlink;
     @Column(name = "director")
     private String director;
     @Column(name = "releaseDate")

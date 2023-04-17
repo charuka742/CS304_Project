@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Date;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -21,15 +21,15 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @Column(name = "userId")
+    private int userId;
 
     @Column(name = "name")
     private String name;
     @Column(name = "email")
     private String email;
-    @Column(name = "birthD")
-    private LocalDate birthD;
+    @Column(name = "dob")
+    private LocalDate dob;
     @Column(name = "mobileNo")
     private String mobileNo;
     @Column(name = "city")
@@ -61,4 +61,6 @@ public class User {
     @OneToMany(mappedBy="user" ,cascade = CascadeType.ALL)
     private List<Feedback> feedbacks;
 
+    /*@OneToOne(mappedBy = "user" , cascade = CascadeType.ALL)
+    private Login login;*/
 }

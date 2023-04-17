@@ -19,12 +19,9 @@ public class MovieDto {
     private String description;
     private String rating;
     private String trailerLink;
-    private String banner;
+    private String bannerlink;
     private String director;
     private LocalDate releaseDate;
     private int runtime;
 
-
-    /*private Set<String> genre;
-    private Set<String> crew;*/
 }

@@ -21,6 +21,35 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
+    @GetMapping("/search/title/{title}")
+    public ResponseEntity<List<Movie>> searchMoviesByTitle(@PathVariable String title) {
+        List<Movie> movies = movieService.searchMoviesByTitle(title);
+        return new ResponseEntity<>(movies, HttpStatus.OK);
+    }
+
+    @GetMapping("/search/director/{director}")
+    public ResponseEntity<List<Movie>> searchMoviesByDirector(@PathVariable String director) {
+        List<Movie> movies = movieService.searchMoviesByDirector(director);
+        return new ResponseEntity<>(movies, HttpStatus.OK);
+    }
+
+  /*  @GetMapping("/search/genre/{genre}")
+    public ResponseEntity<List<Movie>> searchMoviesByGenre(@PathVariable String genre) {
+        List<Movie> movies = movieService.searchMoviesByGenre(genre);
+        return new ResponseEntity<>(movies, HttpStatus.OK);
+    }
+*/
+    /*@GetMapping("/search/year/{year}")
+    public ResponseEntity<List<Movie>> searchMoviesByYear(@PathVariable int year) {
+        List<Movie> movies = movieService.searchMoviesByYear(year);
+        return new ResponseEntity<>(movies, HttpStatus.OK);
+    }*/
+
+
+
+
+
+
     /* Add a movie */
     @PostMapping
     public ResponseEntity<MovieDto> createMovie(@RequestBody Movie movie){
@@ -29,7 +58,7 @@ public class MovieController {
     }
 
     /* Update Movie */
-    @PutMapping("{movieId}")
+    @PutMapping("/update/{movieId}")
     public ResponseEntity<MovieDto> updateMovie(@RequestBody MovieDto movieDto, @PathVariable("movieId") Integer movieId){
         MovieDto updateMovie = this.movieService.updateMovie(movieDto, movieId);
         return ResponseEntity.ok(updateMovie);
